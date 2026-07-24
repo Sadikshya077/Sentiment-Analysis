@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🇳🇵 CNN-BiLSTM Based Target-Aspect Sentiment Analysis for Nepali Public Opinion Mining
+# A CNN-BiLSTM Based Target-Aspect Sentiment Analysis for Nepali Public Opinion Mining
 
 ### Deep Learning • Natural Language Processing • Target-Aspect Based Sentiment Analysis (TABSA)
 
