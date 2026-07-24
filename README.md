@@ -1,164 +1,235 @@
-# CNN-BiLSTM Based Target-Aspect Sentiment Analysis for Nepali Public Opinion Mining
+<div align="center">
 
-A deep learning framework for **Target-Aspect Based Sentiment Analysis (TABSA)** on Nepali YouTube comments. This project combines language identification, transliteration, target detection, and sentiment classification to analyze public opinion from multilingual and code-mixed social media data.
+# 🇳🇵 CNN-BiLSTM Based Target-Aspect Sentiment Analysis for Nepali Public Opinion Mining
+
+### Deep Learning • Natural Language Processing • Target-Aspect Based Sentiment Analysis (TABSA)
+
+A hybrid deep learning framework for analyzing **Nepali social media sentiment** from multilingual and code-mixed YouTube comments using **FastText, Transformer-based Target Detection, and CNN-BiLSTM**.
+
+![Python](https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge&logo=python)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-DeepLearning-orange?style=for-the-badge&logo=tensorflow)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-Transformers-yellow?style=for-the-badge)
+![FastText](https://img.shields.io/badge/FastText-Language%20Identification-green?style=for-the-badge)
+![GitHub](https://img.shields.io/badge/GitHub-Open%20Source-black?style=for-the-badge&logo=github)
+
+</div>
 
 ---
 
-## Overview
+# 📖 Overview
 
-Social media comments in Nepal frequently contain:
+Nepali social media comments are highly challenging for Natural Language Processing because they frequently contain:
 
-- Nepali written in Devanagari
-- Romanized Nepali
+- Nepali written in **Devanagari**
+- **Romanized Nepali**
 - English
-- Code-mixed text
+- Code-mixed sentences
+- Informal spellings and slang
 
-Traditional sentiment analysis models struggle with this linguistic diversity.
+Traditional sentiment analysis models often fail to understand these multilingual inputs.
 
-This project proposes a hybrid pipeline that first normalizes multilingual input and then performs **target-specific aspect and sentiment analysis** using a CNN-BiLSTM model.
+This project introduces a **Target-Aspect Based Sentiment Analysis (TABSA)** pipeline capable of identifying the language, normalizing text, detecting opinion targets, and predicting both the **aspect** and **sentiment** associated with each target.
 
 ---
 
-## Features
+# 🚀 Key Features
 
 - Language Identification using FastText
 - Romanized Nepali → Devanagari Transliteration
-- Target Detection using a pretrained Transformer model
-- Target-Aspect Based Sentiment Analysis
-- CNN-BiLSTM deep learning architecture
-- YouTube comment extraction using YouTube Data API
-- Modular inference pipeline
+- Transformer-based Target Detection
+- CNN-BiLSTM Aspect Classification
+- CNN-BiLSTM Sentiment Classification
+- YouTube Comment Extraction using YouTube Data API
+- Modular NLP Pipeline
+- Support for multilingual and code-mixed Nepali text
 
 ---
 
-## System Pipeline
+# 🏗 System Architecture
 
-```text
-YouTube Comments
-        │
-        ▼
-Language Identification (FastText)
-        │
-        ▼
-Transliteration (Romanized → Devanagari)
-        │
-        ▼
-Target Detection
-        │
-        ▼
-CNN-BiLSTM
-        │
-        ├── Aspect Classification
-        └── Sentiment Classification
+```
+                    YouTube Comments
+                           │
+                           ▼
+          Language Identification (FastText)
+                           │
+                           ▼
+     Romanized → Devanagari Transliteration
+                           │
+                           ▼
+      Transformer-based Target Detection
+                           │
+                           ▼
+            CNN + Bidirectional LSTM
+                           │
+            ┌──────────────┴──────────────┐
+            ▼                             ▼
+   Aspect Classification        Sentiment Classification
 ```
 
 ---
 
-## Tech Stack
+# 🧠 Model Architecture
 
-| Category | Technologies |
-|----------|--------------|
-| Language | Python |
-| Deep Learning | TensorFlow, Keras |
-| NLP | Hugging Face Transformers, FastText |
-| Data Processing | Pandas, NumPy |
-| Machine Learning | Scikit-learn |
-| Data Collection | YouTube Data API v3 |
-| Development | VS Code, Google Colab |
-| Version Control | Git & GitHub |
+The proposed sentiment classifier combines the strengths of two neural architectures.
+
+### CNN
+
+- Captures local semantic patterns
+- Learns important n-gram features
+- Extracts discriminative representations
+
+### Bidirectional LSTM
+
+- Learns contextual dependencies
+- Understands long-range relationships
+- Processes text in both forward and backward directions
+
+The combined CNN-BiLSTM architecture effectively models Nepali social media text, improving both aspect detection and sentiment prediction.
 
 ---
 
-## Project Structure
+# 🔄 Project Workflow
+
+```
+Collect YouTube Comments
+        │
+        ▼
+Detect Language
+        │
+        ▼
+Transliterate Romanized Nepali
+        │
+        ▼
+Detect Opinion Target
+        │
+        ▼
+CNN Feature Extraction
+        │
+        ▼
+BiLSTM Context Learning
+        │
+        ▼
+Aspect Prediction
+        │
+        ▼
+Sentiment Prediction
+```
+
+---
+
+# 💻 Technology Stack
+
+| Category | Technologies |
+|-----------|--------------|
+| Programming | Python |
+| Deep Learning | TensorFlow, Keras |
+| NLP | Hugging Face Transformers, FastText |
+| Machine Learning | Scikit-learn |
+| Data Processing | Pandas, NumPy |
+| Visualization | Matplotlib |
+| API | YouTube Data API v3 |
+| Version Control | Git & GitHub |
+| Development | VS Code, Google Colab |
+
+---
+
+# 📂 Repository Structure
 
 ```
 .
 ├── NLP-project/
+│   ├── comment_extractor.py
 │   ├── main.py
 │   ├── pipeline.py
 │   ├── registry.py
-│   ├── comment_extractor.py
 │   └── ml/
-│       ├── language_identifier.py
-│       ├── transliteration_model.py
-│       ├── target_model.py
+│       ├── base.py
 │       ├── devanagari.py
-│       └── base.py
+│       ├── language_identifier.py
+│       ├── target_model.py
+│       └── transliteration_model.py
 │
 ├── models/
 │   ├── devanagari_models/
+│   ├── target_model/
 │   ├── translation_model/
-│   ├── transliteration_model/
-│   └── target_model/
+│   └── transliteration_model/
 │
+├── .gitignore
 └── README.md
 ```
 
 ---
 
-## Model Architecture
+# 📊 Highlights
 
-The sentiment prediction model combines:
+✔ Developed a multilingual NLP pipeline for Nepali social media.
 
-- CNN for local feature extraction
-- Bidirectional LSTM for contextual sequence learning
-- Dual-output prediction
-  - Aspect Classification
-  - Sentiment Classification
+✔ Built a hybrid CNN-BiLSTM deep learning model.
 
-This architecture captures both local semantic patterns and long-range contextual dependencies in Nepali text.
+✔ Integrated FastText language identification for multilingual inputs.
 
----
+✔ Implemented Romanized Nepali transliteration.
 
-## Workflow
+✔ Incorporated Transformer-based target detection.
 
-1. Collect YouTube comments.
-2. Detect input language.
-3. Transliterate Romanized Nepali into Devanagari.
-4. Detect opinion target.
-5. Extract semantic features using CNN.
-6. Learn contextual dependencies using BiLSTM.
-7. Predict:
-   - Target Aspect
-   - Sentiment (Positive / Neutral / Negative)
+✔ Automated YouTube comment collection using YouTube Data API.
+
+✔ Designed the system using a modular architecture for extensibility.
 
 ---
 
-## Repository Contents
+# 📦 Large Model Files
 
-This repository includes:
+GitHub limits files larger than **100 MB**.
 
-- Source code
-- Model configuration files
-- Tokenizers
-- Small trained models
+Therefore, the following pretrained models are **not included** in this repository:
 
-Large pretrained models have been excluded because they exceed GitHub's file size limit.
+- FastText Language Identification Model
+- Transformer Target Detection Model (`model.safetensors`)
 
----
-
-## Future Improvements
-
-- Deploy as a web application
-- Improve target extraction accuracy
-- Support additional Nepali dialects
-- Real-time sentiment monitoring dashboard
-- Explainable AI (XAI) integration
+Only configuration files and lightweight models are included.
 
 ---
 
-## Authors
+# 🔮 Future Improvements
 
-- Sadikshya Adhikari
-- Nirika Lamichhane
-- Ankita Shah
-- Pooja Kapari
+- Web application deployment
+- Real-time sentiment dashboard
+- Explainable AI (XAI)
+- Named Entity Recognition enhancement
+- Larger multilingual datasets
+- Improved target extraction
+- Model optimization for faster inference
 
-Supervisor:
+---
+
+# 👩‍💻 Authors
+
+- **Sadikshya Adhikari**
+- **Nirika Lamichhane**
+- **Ankita Shah**
+- **Pooja Kapari**
+
+### Supervisor
+
 **Er. Rajad Shakya**
 
+Department of Computer Engineering  
+Thapathali Engineering Campus  
+Tribhuvan University
+
 ---
 
-## License
+# 📄 License
 
-This project was developed for academic and research purposes.
+This project was developed for academic research and educational purposes.
+
+---
+
+<div align="center">
+
+### ⭐ If you found this project interesting, consider giving it a star!
+
+</div>
