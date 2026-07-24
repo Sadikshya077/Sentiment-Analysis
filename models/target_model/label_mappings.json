@@ -1,0 +1,24 @@
+{
+    "label2id": {
+        "O": 0,
+        "B-POLITICIAN": 1,
+        "I-POLITICIAN": 2,
+        "B-PARTY": 3,
+        "I-PARTY": 4,
+        "B-POLICY": 5,
+        "I-POLICY": 6,
+        "B-INSTITUTION": 7,
+        "I-INSTITUTION": 8
+    },
+    "id2label": {
+        "0": "O",
+        "1": "B-POLITICIAN",
+        "2": "I-POLITICIAN",
+        "3": "B-PARTY",
+        "4": "I-PARTY",
+        "5": "B-POLICY",
+        "6": "I-POLICY",
+        "7": "B-INSTITUTION",
+        "8": "I-INSTITUTION"
+    }
+}
