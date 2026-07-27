@@ -205,7 +205,7 @@ Only configuration files and lightweight models are included.
 
 ---
 
-# 👩‍💻 Authors
+<!-- # 👩‍💻 Authors
 
 - **Sadikshya Adhikari**
 - **Nirika Lamichhane**
@@ -214,7 +214,7 @@ Only configuration files and lightweight models are included.
 
 ### Supervisor
 
-**Er. Rajad Shakya**
+**Er. Rajad Shakya** -->
 
 Department of Computer Engineering  
 Thapathali Engineering Campus  
